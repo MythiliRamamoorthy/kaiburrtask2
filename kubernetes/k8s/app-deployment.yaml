@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kaiburr-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kaiburr-backend
+  template:
+    metadata:
+      labels:
+        app: kaiburr-backend
+    spec:
+      containers:
+        - name: kaiburr-backend
+          image: your-dockerhub-username/kaiburr-task1:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_URI
+              value: mongodb://mongo:27017
